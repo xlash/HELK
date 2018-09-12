@@ -41,6 +41,7 @@ services:
     entrypoint: /usr/share/logstash/scripts/logstash-entrypoint.sh
     ports:
       - "5044:5044"
+      - "5514:5514"
     restart: always
     depends_on:
       - helk-zookeeper
@@ -148,7 +149,7 @@ services:
       - KAFKA_BROKER_ID=1
       - KAFKA_BROKER_PORT=9092
       - REPLICATION_FACTOR=2
-      - ADVERTISED_LISTENER=HOSTIP
+      - ADVERTISED_LISTENER=0
       - ZOOKEEPER_NAME=helk-zookeeper
       - KAFKA_CREATE_TOPICS=True
     ports:
@@ -166,7 +167,7 @@ services:
       - KAFKA_BROKER_ID=2
       - KAFKA_BROKER_PORT=9093
       - REPLICATION_FACTOR=2
-      - ADVERTISED_LISTENER=HOSTIP
+      - ADVERTISED_LISTENER=0
       - ZOOKEEPER_NAME=helk-zookeeper
       - KAFKA_CREATE_TOPICS=True
     ports:
